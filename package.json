@@ -1,0 +1,25 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulioRios15/Employee-Tracker.git"
+  },
+  "author": "Julio Rios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulioRios15/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/JulioRios15/Employee-Tracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3-rc.0"
+  }
+}
