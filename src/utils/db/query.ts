@@ -18,14 +18,9 @@ export const getALlEmployees = async (connection: Connection) => {
                 JOIN department 
                     On employee_role.department_id = department.id;`
     )
-    .then(([rows, fields]) => {
-        return rows;
-    })
-    .catch((error) => {
-        return error
-    });
+    .then(([rows, fields]) => rows)
+    .catch((error) => error);
 
-    connection.end();
     return data;
 }
 
@@ -37,14 +32,9 @@ export const getAllDepartments = async (connection: Connection) => {
                     department; 
 `
     )
-    .then(([rows, fields]) => {
-        return rows;
-    })
-    .catch((error) => {
-        return error
-    });
-
-    connection.end();
+    .then(([rows, fields]) => rows)
+    .catch((error) => error);
+    
     return data;
 }
 
