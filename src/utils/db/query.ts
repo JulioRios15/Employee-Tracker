@@ -1,6 +1,8 @@
+import { Connection } from "mysql2";
 
-export const getEmployees = async (connection) => {
 
+export const getALlEmployees = async (connection: Connection) => {
+    
     const data = await connection.promise()
     .query(`
         SELECT  employee.id, 
@@ -27,7 +29,7 @@ export const getEmployees = async (connection) => {
     return data;
 }
 
-export const getAllDepartments = async (connection) => {
+export const getAllDepartments = async (connection: Connection) => {
     const data = await connection.promise()
     .query(`
         SELECT  department.department_name
