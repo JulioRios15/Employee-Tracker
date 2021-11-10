@@ -6,6 +6,8 @@ export const promtpDepartments = async (connection: Connection) => {
 
     const departments: [] = await database.getAllDepartments(connection);
 
+    if(departments.length == 0) return null; 
+
     let departmetsArray: string[] = [];
 
     departments.forEach((item: any) => {

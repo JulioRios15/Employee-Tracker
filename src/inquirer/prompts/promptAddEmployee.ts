@@ -7,7 +7,7 @@ import inquirer, {QuestionCollection, ListQuestion, Answers, Question} from "inq
  */
 export const promptAddEmployee = async (connection: Connection) => {
     // Get the employee Roles from our sql database
-    const employeeRoles = await database.getALlEmployeeRoles(connection);
+    const employeeRoles: [] = await database.getALlEmployeeRoles(connection);
 
     //Return null if no employee roles added to the database
     if(employeeRoles.length == 0) return null;
