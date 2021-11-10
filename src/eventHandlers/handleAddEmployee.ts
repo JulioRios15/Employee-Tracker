@@ -5,9 +5,12 @@ import {AddEmployee} from '../database/insert/addEmployee'
 import {promptAddEmployee} from '../inquirer/prompts/promptAddEmployee';
 
 export const handleAddEmployee = async (connection: Connection)  => {
-    
 
     const addEmployeePromptData = await promptAddEmployee(connection);
+
+    if(addEmployeePromptData == null) {
+        return console.log("No Roles Added to database");     
+    }
     
     const firstName = addEmployeePromptData.firstName;
     const lastName = addEmployeePromptData.lastName;
@@ -15,12 +18,5 @@ export const handleAddEmployee = async (connection: Connection)  => {
 
     const roleId: number = await database.getRoleIdByRoleTile(connection, employeeRole);
 
-    const newEmployee = await AddEmployee(connection,firstName, lastName, roleId);
-
-    console.log("new Employee Added",newEmployee.affectedRows);
-    
-
-
-    
-      
+    await AddEmployee(connection,firstName, lastName, roleId);    
 }

@@ -3,11 +3,14 @@ import database from '../../database/query';
 import inquirer, {QuestionCollection, ListQuestion, Answers, Question} from "inquirer";
 
 /**
- * @Returns inquirer object of all employees roles
+ * @Returns inquirer object or null if no employee roles added to database
  */
 export const promptAddEmployee = async (connection: Connection) => {
     // Get the employee Roles from our sql database
     const employeeRoles = await database.getALlEmployeeRoles(connection);
+
+    //Return null if no employee roles added to the database
+    if(employeeRoles.length == 0) return null;
 
     // Create an Array to Store all roles added in our database
     let rolesArr: string[] = [];
