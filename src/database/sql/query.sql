@@ -12,3 +12,17 @@ JOIN employee_role
 JOIN department 
     On employee_role.department_id = department.id;
 
+-- Select ALl Employees By Department
+SELECT  employee.first_name, 
+        employee.last_name, 
+        employee_role.title
+FROM 
+    employee 
+JOIN employee_role 
+    ON employee.role_id = employee_role.id
+JOIN department 
+    On employee_role.department_id = department.id
+WHERE department.department_name = "OPE";
+
+
+
