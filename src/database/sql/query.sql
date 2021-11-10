@@ -24,5 +24,20 @@ JOIN department
     On employee_role.department_id = department.id
 WHERE department.department_name = "OPE";
 
+--Selec All Roles 
+
+SELECT  employee_role.title
+FROM 
+    employee_role
+JOIN department
+    ON employee_role.department_id = department.id;
+
+    -- get employee role id by role title
+
+SELECT employee_role.id 
+From employee_role
+WHERE employee_role.title = "TA";
+
+
 
 

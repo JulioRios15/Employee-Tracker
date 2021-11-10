@@ -28,6 +28,9 @@ async function init(){
             case MenuOptions.ViewEmployeeByDepartment: 
                 await eventHandlers.handleGetEmployeesByDepartment(connection);
                     break
+            case MenuOptions.AddEmployee:
+                await eventHandlers.handleAddEmployee(connection);
+                    break;
         
             default:
                 console.log("---------Not Implemented---------");              
