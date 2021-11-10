@@ -1,9 +1,7 @@
 import mysql from 'mysql2';
-import cTable from 'console.table';
 import dbConfig from './config/database';
 import {MenuOptions} from './inquirer/config/mainMenuConfig';
 import inquirerPrompts from './inquirer';
-import {handleGetAllEmployees} from './eventHandlers/handleGetAllEmployees';
 import eventHandlers from './eventHandlers/';
 
 async function init(){
@@ -31,6 +29,9 @@ async function init(){
             case MenuOptions.AddEmployee:
                 await eventHandlers.handleAddEmployee(connection);
                     break;
+            case MenuOptions.ViewUtilizedBudget:
+                await eventHandlers.handleUtilizedBudget(connection);
+                    break
         
             default:
                 console.log("---------Not Implemented---------");              
