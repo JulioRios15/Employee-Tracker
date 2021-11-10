@@ -1,6 +1,7 @@
 import { Connection } from "mysql2";
 import database from '../../database/query';
 import inquirer, {QuestionCollection, ListQuestion, Answers, Question} from "inquirer";
+import validate from '../config/validation';
 
 /**
  * @Returns inquirer object or null if no employee roles added to database
@@ -22,12 +23,14 @@ export const promptAddEmployee = async (connection: Connection) => {
     const firstNameQuestion: Question = {
         type: "input",
         name: "firstName",
-        message: "Enter Employee First Name"
+        message: "Enter Employee First Name",
+        validate: validate.validateNotEmpty
     }
     const lastNameQuestion: Question = {
         type: "input",
         name: "lastName",
-        message: "Enter Employee Last Name"
+        message: "Enter Employee Last Name",
+        validate: validate.validateNotEmpty
     }
 
     const employeeRolesQuestion: ListQuestion = {
