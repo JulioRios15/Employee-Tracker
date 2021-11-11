@@ -4,7 +4,8 @@ import inquirer, {QuestionCollection, ListQuestion, Answers, ChoiceCollection} f
 
 /**
  * 
- * @param connection database connection 
+ * @param connection database connection
+ * @INFO prompts a list of all employees added in database 
  * @returns IEmployee Interface of selected employee, or null if error or no employees
  * to show
  */
