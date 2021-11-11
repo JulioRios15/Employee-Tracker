@@ -10,6 +10,7 @@ import {updateEmployee} from './update/updateEmployee';
 import {getAllDepartments} from './query/getAllDepartments';
 import {getALlEmployeeRoles} from './query/getAllEmployeeRoles';
 import {getALlEmployees} from './query/getAllEmployees';
+import {getEmployeeById} from './query/getEmployeeById';
 import {getALlEmployeesJoined} from './query/getAllEmployeesJoined';
 import {getDepartmentByDepartmentName} from './query/getDepartmentByDepartmentName';
 import {getEmployeesByDepartment} from './query/getEmployeesByDepartment';
@@ -66,6 +67,7 @@ const query = {
     getAllDepartments,
     getALlEmployeeRoles,
     getALlEmployees,
+    getEmployeeById,
     getALlEmployeesJoined,
     getDepartmentByDepartmentName,
     getEmployeesByDepartment,
