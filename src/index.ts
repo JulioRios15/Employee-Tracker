@@ -21,25 +21,28 @@ async function init(){
         
         //Switch based on the user choice selection
         switch (MenuOption) {
-            case MenuOptions.ViewAllEmployees: 
-                    await eventHandlers.handleGetAllEmployees(database.getConnection());
-                    break;
-            case MenuOptions.ViewEmployeeByDepartment: 
-                    await eventHandlers.handleGetEmployeesByDepartment(database.getConnection());
+                case MenuOptions.ViewAllEmployees: 
+                        await eventHandlers.handleGetAllEmployees(database.getConnection());
+                        break;
+                case MenuOptions.ViewEmployeeByDepartment: 
+                        await eventHandlers.handleGetEmployeesByDepartment(database.getConnection());
+                        break
+                case MenuOptions.AddEmployee:
+                        await eventHandlers.handleAddEmployee(database.getConnection());
+                        break;
+                case MenuOptions.UpdateEmployee:
+                        await eventHandlers.handleUpdateEmployee(database.getConnection());
+                        break
+                case MenuOptions.ViewUtilizedBudget:
+                        await eventHandlers.handleUtilizedBudget(database.getConnection());
                     break
-            case MenuOptions.AddEmployee:
-                    await eventHandlers.handleAddEmployee(database.getConnection());
-                    break;
-            case MenuOptions.ViewUtilizedBudget:
-                    await eventHandlers.handleUtilizedBudget(database.getConnection());
-                    break
-            case MenuOptions.AddDepartment: 
-                    await eventHandlers.handleAddDepartment(database.getConnection());
-                    break
+                case MenuOptions.AddDepartment: 
+                        await eventHandlers.handleAddDepartment(database.getConnection());
+                        break
         
-            default:
-                console.log("---------Not Implemented---------");              
-                break;
+                default:
+                        console.log("---------Not Implemented---------");              
+                        break;
         }
 
         mainMenuAnswers = await inquirerPrompts.promptMainMenu();
