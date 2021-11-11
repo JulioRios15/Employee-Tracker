@@ -34,7 +34,7 @@ async function init(){
                         break
                 case MenuOptions.ViewUtilizedBudget:
                         await eventHandlers.handleUtilizedBudget(connection);
-                    break
+                        break
                 case MenuOptions.AddDepartment: 
                         await eventHandlers.handleAddDepartment(connection);
                         break
