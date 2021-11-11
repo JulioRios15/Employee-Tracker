@@ -8,7 +8,7 @@ import inquirer, {QuestionCollection, ListQuestion, Answers} from "inquirer";
  * @Return inquirer answer object with name property "departmentName" or 
  * null if no departments fetch
  */
-export const promtpDepartments = async (connection: Connection) => {
+export const promtpDepartments = async (connection: Connection, message: string = "Select Department") => {
 
     const departments: [] = await database.query.getAllDepartments(database.getConnection());
 
@@ -28,7 +28,7 @@ export const promtpDepartments = async (connection: Connection) => {
     const departmentQuestion: ListQuestion = {
         type: 'list',
         name: 'departmentName',
-        message: "Select Department",
+        message: message,
         choices: departmetsArray
     } 
 
