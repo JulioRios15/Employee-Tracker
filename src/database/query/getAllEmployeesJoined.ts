@@ -1,7 +1,7 @@
 import { Connection } from "mysql2";
 
 
-export const getALlEmployees = async (connection: Connection) => {
+export const getALlEmployeesJoined = async (connection: Connection) => {
     
     const data = await connection.promise()
     .query(`

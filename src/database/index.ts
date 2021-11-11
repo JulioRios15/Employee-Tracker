@@ -7,7 +7,7 @@ import {addEmployeeRole} from './insert/addEmployeeRole';
 
 import {getAllDepartments} from './query/getAllDepartments';
 import {getALlEmployeeRoles} from './query/getAllEmployeeRoles';
-import {getALlEmployees} from './query/getAllEmployees';
+import {getALlEmployeesJoined} from './query/getAllEmployeesJoined';
 import {getDepartmentByDepartmentName} from './query/getDepartmentByDepartmentName';
 import {getEmployeesByDepartment} from './query/getEmployeesByDepartment';
 import {getRoleIdByRoleTile} from './query/getRoleIdByRoleTile';
@@ -36,7 +36,7 @@ const insert = {
 const query = {
     getAllDepartments,
     getALlEmployeeRoles,
-    getALlEmployees,
+    getALlEmployeesJoined,
     getDepartmentByDepartmentName,
     getEmployeesByDepartment,
     getRoleIdByRoleTile
