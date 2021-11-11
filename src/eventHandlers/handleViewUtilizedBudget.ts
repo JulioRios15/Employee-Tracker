@@ -3,7 +3,7 @@ import cTable from "console.table";
 import database from '../database';
 import {promtpDepartments} from '../inquirer/prompts/promptDepartments';
 
-export const handleUtilizedBudget = async (connection:Connection) => {
+export const handleViewUtilizedBudget = async (connection:Connection) => {
 
     //fetch departments in database
     const departmentData = await promtpDepartments(connection);

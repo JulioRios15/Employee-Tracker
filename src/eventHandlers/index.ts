@@ -1,17 +1,17 @@
-import {handleGetAllEmployees} from './handleGetAllEmployees';
-import {handleGetEmployeesByDepartment} from './handleGetEmployeesByDepartment';
+import {handleViewAllEmployees} from './handleViewAllEmployees';
+import {handleViewEmployeesByDepartment} from './handleViewEmployeesByDepartment';
 import {handleAddEmployee} from './handleAddEmployee';
 import {handleUpdateEmployee} from './handleUpdateEmployee';
 import {handleUpdateEmployeeRole} from './handleUpdateEmployeeRole';
 import {handleAddDepartment} from './handleAddDepartment';
-import {handleUtilizedBudget} from './handleUtilizedBudget';
+import {handleViewUtilizedBudget} from './handleViewUtilizedBudget';
 
 export default {
-    handleGetAllEmployees,
-    handleGetEmployeesByDepartment,
+    handleViewAllEmployees,
+    handleViewEmployeesByDepartment,
     handleAddEmployee,
     handleUpdateEmployee,
     handleUpdateEmployeeRole,
     handleAddDepartment,
-    handleUtilizedBudget
+    handleViewUtilizedBudget
 }

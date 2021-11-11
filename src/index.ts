@@ -21,10 +21,10 @@ async function init(){
         //Switch based on the user choice selection
         switch (MenuOption) {
                 case MenuOptions.ViewAllEmployees: 
-                        await eventHandlers.handleGetAllEmployees(connection);
+                        await eventHandlers.handleViewAllEmployees(connection);
                         break;
                 case MenuOptions.ViewEmployeeByDepartment: 
-                        await eventHandlers.handleGetEmployeesByDepartment(connection);
+                        await eventHandlers.handleViewEmployeesByDepartment(connection);
                         break
                 case MenuOptions.AddEmployee:
                         await eventHandlers.handleAddEmployee(connection);
@@ -33,7 +33,7 @@ async function init(){
                         await eventHandlers.handleUpdateEmployeeRole(connection);
                         break
                 case MenuOptions.ViewUtilizedBudget:
-                        await eventHandlers.handleUtilizedBudget(connection);
+                        await eventHandlers.handleViewUtilizedBudget(connection);
                         break
                 case MenuOptions.AddDepartment: 
                         await eventHandlers.handleAddDepartment(connection);

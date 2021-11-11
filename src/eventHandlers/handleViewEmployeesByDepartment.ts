@@ -5,7 +5,7 @@ import cTable from "console.table";
 
 
 
-export const handleGetEmployeesByDepartment = async (connection: Connection) => {
+export const handleViewEmployeesByDepartment = async (connection: Connection) => {
 
     //fetch departments in database
     const departmentData = await promtpDepartments(connection);
