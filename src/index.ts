@@ -30,8 +30,8 @@ async function init(){
                 case MenuOptions.AddEmployee:
                         await eventHandlers.handleAddEmployee(database.getConnection());
                         break;
-                case MenuOptions.UpdateEmployee:
-                        await eventHandlers.handleUpdateEmployee(database.getConnection());
+                case MenuOptions.UpdateEmployeeRole:
+                        await eventHandlers.handleUpdateEmployeeRole(database.getConnection());
                         break
                 case MenuOptions.ViewUtilizedBudget:
                         await eventHandlers.handleUtilizedBudget(database.getConnection());
