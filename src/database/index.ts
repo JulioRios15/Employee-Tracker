@@ -1,12 +1,19 @@
 import mysql, {Connection, ConnectionOptions} from "mysql2";
-import dbConfig from '../config/database'
 
+//Insert imports
 import {addDepartment} from './insert/addDepartment';
 import {AddEmployee} from './insert/addEmployee';
 import {addEmployeeRole} from './insert/addEmployeeRole';
 
+//Update imports
 import {updateEmployee} from './update/updateEmployee';
 
+//Remove imports
+import {removeDepartment} from './remove/removeDepartment';
+import {removeRole} from './remove/removeEmployeeRole';
+import {removeEmployee} from './remove/removeEmployee';
+
+//Query imports
 import {getAllDepartments} from './query/getAllDepartments';
 import {getALlEmployeeRoles} from './query/getAllEmployeeRoles';
 import {getALlEmployees} from './query/getAllEmployees';
@@ -28,7 +35,6 @@ const endConnection =(): void => connection.end();
 
 let connection: Connection = null;
 
-console.log('Create Database Connecton from database index');
 
 
 export interface IEmployee {
@@ -78,10 +84,17 @@ const update = {
     updateEmployee
 }
 
+const remove = {
+    removeEmployee,
+    removeDepartment,
+    removeRole
+}
+
 export default {
     insert,
-    update,
     query,
+    update,
+    remove,
     createConnection,
     getConnection,
     endConnection
