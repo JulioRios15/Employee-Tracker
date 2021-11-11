@@ -1,6 +1,6 @@
 import {Connection} from "mysql2";
 import cTable from "console.table";
-import database from '../database/query';
+import database from '../database';
 import {promtpDepartments} from '../inquirer/prompts/promptDepartments';
 
 export const handleUtilizedBudget = async (connection:Connection) => {
@@ -12,7 +12,7 @@ export const handleUtilizedBudget = async (connection:Connection) => {
     if(departmentData == null) return console.log("No Departments to Show Utilization");
 
     const departmentName = departmentData.departmentName;
-    const employeesByDept: any[] = await database.getEmployeesByDepartment(connection, departmentName); 
+    const employeesByDept: any[] = await database.query.getEmployeesByDepartment(connection, departmentName); 
 
     // if no employees added to department X log something
     if(employeesByDept.length == 0) return console.log(`No Employees Added to the ${departmentName} Department`);

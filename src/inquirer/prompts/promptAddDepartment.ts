@@ -1,5 +1,4 @@
 import { Connection } from "mysql2";
-import database from '../../database/query';
 import inquirer, {QuestionCollection, Answers, Question} from "inquirer";
 import validate from '../config/validation';
 

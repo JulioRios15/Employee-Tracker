@@ -1,5 +1,5 @@
 import { Connection } from "mysql2";
-import database from '../../database/query';
+import database from '../../database';
 import inquirer, {QuestionCollection, ListQuestion, Answers, Question} from "inquirer";
 import validate from '../config/validation';
 
@@ -8,7 +8,7 @@ import validate from '../config/validation';
  */
 export const promptAddEmployee = async (connection: Connection) => {
     // Get the employee Roles from our sql database
-    const employeeRoles: [] = await database.getALlEmployeeRoles(connection);
+    const employeeRoles: [] = await database.query.getALlEmployeeRoles(connection);
 
     //Return null if no employee roles added to the database
     if(employeeRoles.length == 0) return null;
