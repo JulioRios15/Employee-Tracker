@@ -6,7 +6,8 @@ import inquirerPrompts from '../inquirer/prompts';
 export const handleUpdateEmployeeRole = async (connection: Connection)  => {
  
     const employeeData: IJoinedEmployee = await inquirerPrompts.promptAllEmployees(connection);
-    const employeeRoleData: IEmployeeRole = await inquirerPrompts.promptAllEmployeeRoles(connection);
+    const employeeRoleData: IEmployeeRole = await inquirerPrompts.promptAllEmployeeRoles(connection, "New employee new role");
+
     if(employeeData == null && employeeRoleData == null) return console.log("No employees to update");
     
     
