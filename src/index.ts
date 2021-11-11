@@ -29,6 +29,9 @@ async function init(){
                 case MenuOptions.AddEmployee:
                         await eventHandlers.handleAddEmployee(connection);
                         break;
+                case MenuOptions.RemoveEmployee:
+                        await eventHandlers.handleRemoveEmployee(connection);
+                        break;
                 case MenuOptions.UpdateEmployeeRole:
                         await eventHandlers.handleUpdateEmployeeRole(connection);
                         break
