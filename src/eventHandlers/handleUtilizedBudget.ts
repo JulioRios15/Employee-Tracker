@@ -1,4 +1,5 @@
 import {Connection} from "mysql2";
+import cTable from "console.table";
 import database from '../database/query';
 import {promtpDepartments} from '../inquirer/prompts/promptDepartments';
 
@@ -16,13 +17,16 @@ export const handleUtilizedBudget = async (connection:Connection) => {
     // if no employees added to department X log something
     if(employeesByDept.length == 0) return console.log(`No Employees Added to the ${departmentName} Department`);
 
+    // variable to store department budget utilization
     var budgetUtilization: number = 0;
     
+    // for each employee add salary to budgetUtilization
     employeesByDept.forEach((item: any) => {
         const employeeSalary: number = parseInt(item.salary);
         budgetUtilization += employeeSalary;
     });
-    
-    console.log(`${departmentName} has a total of ${budgetUtilization} in budget utilization`);
-    
+
+    //Create the final utilization table
+    const utilizationTable = cTable.getTable(...[employeesByDept], ...[{"Department Budget Utilization": budgetUtilization}]);   
+    console.log(utilizationTable);   
 }
