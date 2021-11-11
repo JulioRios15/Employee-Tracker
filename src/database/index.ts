@@ -5,6 +5,8 @@ import {addDepartment} from './insert/addDepartment';
 import {AddEmployee} from './insert/addEmployee';
 import {addEmployeeRole} from './insert/addEmployeeRole';
 
+import {updateEmployee} from './update/updateEmployee';
+
 import {getAllDepartments} from './query/getAllDepartments';
 import {getALlEmployeeRoles} from './query/getAllEmployeeRoles';
 import {getALlEmployees} from './query/getAllEmployees';
@@ -70,8 +72,13 @@ const query = {
     getRoleIdByRoleTile
 }
 
+const update = {
+    updateEmployee
+}
+
 export default {
     insert,
+    update,
     query,
     createConnection,
     getConnection,
