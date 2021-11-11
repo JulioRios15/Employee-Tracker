@@ -1,6 +1,7 @@
 import {handleViewAllEmployees} from './handleViewAllEmployees';
 import {handleViewEmployeesByDepartment} from './handleViewEmployeesByDepartment';
 import {handleAddEmployee} from './handleAddEmployee';
+import {handleAddEmployeeRole} from './handleAddEmployeeRole';
 import {handleRemoveEmployee} from './handleRemoveEmployee';
 import {handleUpdateEmployee} from './handleUpdateEmployee';
 import {handleUpdateEmployeeRole} from './handleUpdateEmployeeRole';
@@ -11,6 +12,7 @@ export default {
     handleViewAllEmployees,
     handleViewEmployeesByDepartment,
     handleAddEmployee,
+    handleAddEmployeeRole,
     handleRemoveEmployee,
     handleUpdateEmployee,
     handleUpdateEmployeeRole,

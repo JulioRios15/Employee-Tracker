@@ -4,13 +4,14 @@ export enum MenuOptions {
     ViewAllEmployees = "View All Employees", 
     ViewEmployeeByDepartment = "View All Employees By Department",
     ViewEmployeeByManager = "View All Employees By Manager",
+    ViewUtilizedBudget = "View Utilized Budget by Department",  
+    AddDepartment = "Add Department",
+    AddEmployeeRole = "Add Employee Role",
     AddEmployee = "Add Employee",
     RemoveEmployee = "Remove Employee",
     UpdateEmployee = "Update Employee",
     UpdateEmployeeRole = "Update Employee Role",
-    UpdateEmployeeManager = "Update Employee Manager",
-    AddDepartment = "Add Department",
-    ViewUtilizedBudget = "View Utilized Budget by Department",
+    UpdateEmployeeManager = "Update Employee Manager", 
     CloseApplication = "Close Application"
 }
 

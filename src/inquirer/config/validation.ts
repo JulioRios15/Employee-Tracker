@@ -6,14 +6,22 @@ const validateNotEmpty: Validator = async (input: string) => {
     return (input === "")? message : true;
 }
 
-const validateDepartmentExist = async (input: string) => {
+const validateDepartmentExist: Validator = async (input: string) => {
 
     //TODO: Search in database if input exist
     const message = "Value cant be empty";
     return (input === "")? message : true;
 }
 
+const validateNumber: Validator = async (input: string) => {
+
+    if(input === "") return "Value cant be empty";
+
+    return (!parseInt(input))? "Please enter a numeric value" : true;
+}
+
 export default {
     validateNotEmpty,
-    validateDepartmentExist
+    validateDepartmentExist,
+    validateNumber
 }

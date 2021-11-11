@@ -1,5 +1,5 @@
 import { Connection } from "mysql2";
-import database from '../../database';
+import database, {IDepartment} from '../../database';
 import inquirer, {QuestionCollection, ListQuestion, Answers} from "inquirer";
 
 
@@ -10,17 +10,18 @@ import inquirer, {QuestionCollection, ListQuestion, Answers} from "inquirer";
  */
 export const promtpDepartments = async (connection: Connection, message: string = "Select Department") => {
 
-    const departments: [] = await database.query.getAllDepartments(database.getConnection());
+    const departments:IDepartment [] = await database.query.getAllDepartments(connection);
+    
 
     if(departments.length == 0) return null; 
 
-    let departmetsArray: string[] = [];
+    let departmetsNamesArray: string[] = [];
 
     departments.forEach((item: any) => {
-        departmetsArray.push(item.department_name);      
+        departmetsNamesArray.push(item.department_name);      
     });
 
-   if (departmetsArray.length == 0){
+   if (departmetsNamesArray.length == 0){
         console.log("No departments to show");
         return null;
 
@@ -29,10 +30,15 @@ export const promtpDepartments = async (connection: Connection, message: string 
         type: 'list',
         name: 'departmentName',
         message: message,
-        choices: departmetsArray
+        choices: departmetsNamesArray
     } 
 
     return await inquirer.prompt(departmentQuestion)
-    .then((data) => data)
-    .catch(() => null);
+    .then((data: Answers): IDepartment => {
+        const index = departmetsNamesArray.indexOf(data.departmentName);
+        const selectedDepartment:IDepartment = departments[index];     
+        
+        return selectedDepartment
+    })
+    .catch((): undefined => null);
 }
