@@ -9,6 +9,7 @@ export enum MenuOptions {
     UpdateEmployee = "Update Employee",
     UpdateEmployeeRole = "Update Employee Role",
     UpdateEmployeeManager = "Update Employee Manager",
+    AddDepartment = "Add Department",
     ViewUtilizedBudget = "View Utilized Budget by Department",
     CloseApplication = "Close Application"
 }

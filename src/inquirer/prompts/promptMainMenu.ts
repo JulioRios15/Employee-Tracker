@@ -5,5 +5,5 @@ export const promptMainMenu = async () => {
     return await inquirer
     .prompt(mainMenuQuestion)
     .then((data) => data)
-    .catch((error) => error);
+    .catch(() => null);
 }

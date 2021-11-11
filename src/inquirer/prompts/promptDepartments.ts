@@ -1,10 +1,16 @@
 import { Connection } from "mysql2";
-import database from '../../database/query';
+import database from '../../database';
 import inquirer, {QuestionCollection, ListQuestion, Answers} from "inquirer";
 
+
+/**
+ * @INFO prompts a inquirer type list with all departments in database
+ * @Return inquirer answer object with name property "departmentName" or 
+ * null if no departments fetch
+ */
 export const promtpDepartments = async (connection: Connection) => {
 
-    const departments: [] = await database.getAllDepartments(connection);
+    const departments: [] = await database.query.getAllDepartments(database.getConnection());
 
     if(departments.length == 0) return null; 
 
