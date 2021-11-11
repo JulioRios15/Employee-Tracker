@@ -1,20 +1,19 @@
-import mysql from 'mysql2';
 import dbConfig from './config/database';
-import database from './database';
 import {MenuOptions} from './inquirer/config/mainMenuConfig';
 import inquirerPrompts from './inquirer/prompts';
 import eventHandlers from './eventHandlers/';
+import database from './database';
 
 async function init(){
     
-    //Initialize Database Connection
-//     const connection = mysql.createConnection(dbConfig);
+        //Initialize Database Connection
+        const connection = database.createConnection(dbConfig);
 
-    //Prompts main menu and retruns user inquirer promise answer | error
-    let mainMenuAnswers: any = await inquirerPrompts.promptMainMenu();   
+        //Prompts main menu and retruns user inquirer promise answer | error
+        let mainMenuAnswers: any = await inquirerPrompts.promptMainMenu();   
 
-    //If the choice is not "Close Application", Continue
-    while ((mainMenuAnswers.menuOption !== "Close Application") == true) {
+        //If the choice is not "Close Application", Continue
+        while ((mainMenuAnswers.menuOption !== "Close Application") == true) {
         
         //User Main Menu Choice
         const MenuOption: String = mainMenuAnswers.menuOption;
@@ -22,22 +21,22 @@ async function init(){
         //Switch based on the user choice selection
         switch (MenuOption) {
                 case MenuOptions.ViewAllEmployees: 
-                        await eventHandlers.handleGetAllEmployees(database.getConnection());
+                        await eventHandlers.handleGetAllEmployees(connection);
                         break;
                 case MenuOptions.ViewEmployeeByDepartment: 
-                        await eventHandlers.handleGetEmployeesByDepartment(database.getConnection());
+                        await eventHandlers.handleGetEmployeesByDepartment(connection);
                         break
                 case MenuOptions.AddEmployee:
-                        await eventHandlers.handleAddEmployee(database.getConnection());
+                        await eventHandlers.handleAddEmployee(connection);
                         break;
                 case MenuOptions.UpdateEmployeeRole:
-                        await eventHandlers.handleUpdateEmployeeRole(database.getConnection());
+                        await eventHandlers.handleUpdateEmployeeRole(connection);
                         break
                 case MenuOptions.ViewUtilizedBudget:
-                        await eventHandlers.handleUtilizedBudget(database.getConnection());
+                        await eventHandlers.handleUtilizedBudget(connection);
                     break
                 case MenuOptions.AddDepartment: 
-                        await eventHandlers.handleAddDepartment(database.getConnection());
+                        await eventHandlers.handleAddDepartment(connection);
                         break
         
                 default:

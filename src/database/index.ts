@@ -1,4 +1,4 @@
-import mysql, {Connection} from "mysql2";
+import mysql, {Connection, ConnectionOptions} from "mysql2";
 import dbConfig from '../config/database'
 
 import {addDepartment} from './insert/addDepartment';
@@ -18,15 +18,15 @@ import {getRoleIdByRoleTile} from './query/getRoleIdByRoleTile';
 
 
 
-const createConnection = (): Connection => {
-    return mysql.createConnection(dbConfig);
+const createConnection = (config: ConnectionOptions): Connection => {
+    return connection = mysql.createConnection(config);
 }
 
 const getConnection = (): Connection => connection;
 
 const endConnection =(): void => connection.end();
 
-const connection: Connection = createConnection();
+let connection: Connection = null;
 
 console.log('Create Database Connecton from database index');
 
