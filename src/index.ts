@@ -6,6 +6,7 @@ import {promptConfirm, IConfirmAnswer} from './inquirer/prompts/promptConfirm';
 import eventHandlers from './eventHandlers/';
 import database from './database';
 import { Connection } from 'mysql2/';
+import dotenv from 'dotenv';
 import utils from "./utils";
 
 async function init(){
@@ -27,11 +28,26 @@ async function initSetup(){
         const isDotenvCreated = utils.isDotenvCreated();
         if(isDotenvCreated) return;
 
-        const confirm: IConfirmAnswer = await promptConfirm("Do you desire to create a .env file for database config?");
+        const dotenvConfirm: IConfirmAnswer = await promptConfirm("Do you desire to create a .env file for database config?");
 
-        if(confirm.confirm == true){
+        if(dotenvConfirm.confirm == true){
                 await generateEnvFile();
-        }             
+
+                const rundbSchemaConfrim: IConfirmAnswer = await promptConfirm("Do you desire create Local datababse?");
+
+                if(rundbSchemaConfrim.confirm == true){
+                      //TODO: create Local database 
+                      dotenv.config();  
+                      const databaseName = process.env.DATABASE;
+                      const password = process.env.PASSWORD;
+
+                      console.log("db name",databaseName);
+                      console.log("pass", password);
+                      
+                      await utils.createLocalDatabase(databaseName, password, "root");                                         
+                }
+        } 
+                
 }
 
 async function generateEnvFile(){

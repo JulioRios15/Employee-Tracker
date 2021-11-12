@@ -4,8 +4,24 @@ import mysql, {Connection} from 'mysql2';
 import dotenv from 'dotenv';
 
 
-const createLocalDatabase = (databaseName: string): void => {
+const createLocalDatabase = async (databaseName: string, password: string, user: string ="root") => {
+    const connection = mysql.createConnection({
+        user,
+        password
+    });
 
+    const schemaSQL = generateSchemaMarkdown(databaseName);
+    await connection.promise().query(schemaSQL)
+    .then(() => {
+        console.log(`"${databaseName}" databse created`);
+        
+    })
+    .catch(() => {
+        console.log(`unable to created "${databaseName}" database`);
+        
+    });
+
+    connection.end();
 }
 
 /**
@@ -23,6 +39,7 @@ const isDotenvCreated = (): boolean => {
 
 
 export default {
+    createLocalDatabase,
     generateSchemaMarkdown,
     generateEnvMarkdown,
     createEnvFile,
