@@ -5,7 +5,6 @@ import database, {IEmployee} from '../database';
 export const handleRemoveEmployee = async (connection: Connection)  => {
 
     const employeeData:IEmployee = await inquirerPrompts.promptAllEmployees(connection);
-    console.log(employeeData);
     
     // return if no employees to show
     if(!employeeData) return console.log("No employees to show");
