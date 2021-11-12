@@ -26,6 +26,9 @@ async function init(){
                 case MenuOptions.ViewEmployeeByDepartment: 
                         await eventHandlers.handleViewEmployeesByDepartment(connection);
                         break
+                case MenuOptions.ViewUtilizedBudget:
+                        await eventHandlers.handleViewUtilizedBudget(connection);
+                        break
                 case MenuOptions.AddEmployee:
                         await eventHandlers.handleAddEmployee(connection);
                         break;
@@ -38,15 +41,12 @@ async function init(){
                 case MenuOptions.UpdateEmployeeRole:
                         await eventHandlers.handleUpdateEmployeeRole(connection);
                         break
-                case MenuOptions.ViewUtilizedBudget:
-                        await eventHandlers.handleViewUtilizedBudget(connection);
-                        break
                 case MenuOptions.AddDepartment: 
                         await eventHandlers.handleAddDepartment(connection);
                         break
         
                 default:
-                        console.log("---------Not Implemented---------");              
+                        console.log("---------Not Yet Implemented---------");              
                         break;
         }
 
