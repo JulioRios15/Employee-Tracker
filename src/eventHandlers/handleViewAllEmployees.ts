@@ -1,9 +1,12 @@
 import cTable from 'console.table';
 import {Connection} from 'mysql2'
-import database from '../database';
+import database, {IJoinedEmployee} from '../database';
 
 export const handleViewAllEmployees = async (connection: Connection)  => {
-    const employees = await database.query.getALlEmployeesJoined(connection);
+    const employees: IJoinedEmployee[] = await database.query.getALlEmployeesJoined(connection);
+
+    if(employees.length == 0) return console.log("no employees to show");
+    
     const employeeTable = cTable.getTable(employees)              
     console.log(employeeTable);   
 } 

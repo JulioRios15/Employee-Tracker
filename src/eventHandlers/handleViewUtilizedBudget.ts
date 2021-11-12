@@ -11,7 +11,7 @@ export const handleViewUtilizedBudget = async (connection:Connection) => {
     // if no departments added to database log
     if(departmentData == null) return console.log("No Departments to Show Utilization");
 
-    const departmentName = departmentData.departmentName;
+    const departmentName = departmentData.department_name;
     const employeesByDept: any[] = await database.query.getEmployeesByDepartment(connection, departmentName); 
 
     // if no employees added to department X log something

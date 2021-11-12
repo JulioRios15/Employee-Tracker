@@ -13,7 +13,7 @@ async function init(){
         let mainMenuAnswers: any = await inquirerPrompts.promptMainMenu();   
 
         //If the choice is not "Close Application", Continue
-        while ((mainMenuAnswers.menuOption !== "Close Application") == true) {
+        while ((mainMenuAnswers.menuOption !== MenuOptions.CloseApplication) == true) {
         
         //User Main Menu Choice
         const MenuOption: String = mainMenuAnswers.menuOption;
