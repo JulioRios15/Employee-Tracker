@@ -20,8 +20,15 @@ const validateNumber: Validator = async (input: string) => {
     return (!parseInt(input))? "Please enter a numeric value" : true;
 }
 
+const validateConfirm: Validator = async (input: string) => {
+    
+    const message = "please enter Y, y, or N, n";
+    return (input === "Y" || input === "y" || input === "N" || input === "n")? true : message;
+}
+
 export default {
     validateNotEmpty,
     validateDepartmentExist,
-    validateNumber
+    validateNumber,
+    validateConfirm
 }
