@@ -1,10 +1,13 @@
-import {ConnectionOptions} from 'mysql2'
+import {ConnectionOptions} from 'mysql2';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: ConnectionOptions = {
     host: 'localhost',
     user: 'root',
-    password: '123456',
-    database: 'employee_tracker_db'
+    password: process.env.PASSWORD || '123456',
+    database: process.env.DATABASE ||'employee_tracker_db'
 }
 
 export default config;
