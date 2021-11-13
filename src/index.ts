@@ -1,19 +1,12 @@
 import dbConfig from './config/database';
 import {MenuOptions} from './inquirer/config/mainMenuConfig';
 import inquirerPrompts from './inquirer/prompts';
-import {promptConfig, IConfigAnswers} from './inquirer/prompts/promptConfig';
-import {promptConfirm, IConfirmAnswer} from './inquirer/prompts/promptConfirm';
 import eventHandlers from './eventHandlers/';
 import database from './database';
 import { Connection } from 'mysql2/';
-import dotenv from 'dotenv';
-import utils from "./utils";
 
 async function init(){
         
-        //initialize database configuration prompts
-        await initSetup();
-
         //Initialize Database Connection
         const connection = database.createConnection(dbConfig);
         
@@ -22,44 +15,6 @@ async function init(){
 
         // End the sql server connection
         database.endConnection();
-}
-
-async function initSetup(){
-        const isDotenvCreated = utils.isDotenvCreated();
-        if(isDotenvCreated) return;
-
-        const dotenvConfirm: IConfirmAnswer = await promptConfirm("Do you desire to create a .env file for database config?");
-
-        if(dotenvConfirm.confirm == true){
-                await generateEnvFile();
-
-                const rundbSchemaConfrim: IConfirmAnswer = await promptConfirm("Do you desire create Local datababse?");
-
-                if(rundbSchemaConfrim.confirm == true){
-                      //TODO: create Local database 
-                      dotenv.config();  
-                      const databaseName = process.env.DATABASE;
-                      const password = process.env.PASSWORD;
-
-                      console.log("db name",databaseName);
-                      console.log("pass", password);
-                      
-                      await utils.createLocalDatabase(databaseName, password, "root");                                         
-                }
-        } 
-                
-}
-
-async function generateEnvFile(){
-        const configData:IConfigAnswers = await promptConfig();
-
-        if(configData == null) return;
-
-        const databaseName = configData.databaseName;
-        const password = configData.password;
-        const envMarkdown = utils.generateEnvMarkdown(databaseName, password);
-
-        utils.createEnvFile(envMarkdown);
 }
 
 async function startMainMenu(connection: Connection) {

@@ -1,47 +1,69 @@
-import {generateEnvMarkdown, generateSchemaMarkdown} from "./markdown";
+import {
+    generateEnvMarkdown,
+    generateSchemaMarkDown,
+    generateSeedsMarkDown
+} from "./sqlMarkdown";
 import {createEnvFile} from "./fileManagement";
-import mysql, {Connection} from 'mysql2';
-import dotenv from 'dotenv';
+import mysql, {Connection, RowDataPacket} from 'mysql2';
 
 
-const createLocalDatabase = async (databaseName: string, password: string, user: string ="root") => {
+const createDatabaseSchema = async (databaseName: string, password: string, host: string, user: string ="root") => {
     const connection = mysql.createConnection({
+        host,
         user,
-        password
+        password,
+        multipleStatements: true
     });
+    
+    const schemaSQL = generateSchemaMarkDown(databaseName);
 
-    const schemaSQL = generateSchemaMarkdown(databaseName);
-    await connection.promise().query(schemaSQL)
-    .then(() => {
-        console.log(`"${databaseName}" databse created`);
-        
+    const data = await connection.promise().query(schemaSQL)
+    .then((result) => {
+        console.log(` Schema for database "${databaseName}" created successfully`);  
+        return result;   
     })
-    .catch(() => {
-        console.log(`unable to created "${databaseName}" database`);
-        
-    });
+    .catch((error) => {
+        console.log(`Unable to create schema for database "${databaseName}"`);   
+        return null;     
+    })
 
-    connection.end();
+    connection.end(); 
+    
+    return data;
 }
 
-/**
- * 
- * @returns true if PASSWORD & DATABASE has value in root .env
- */
-const isDotenvCreated = (): boolean => {
-    dotenv.config();
 
-    const password = process.env.PASSWORD;
-    const database = process.env.DATABASE;    
+const seedDatabase = async (databaseName: string, password: string, host: string, user: string ="root" ) => {
+    const connection = mysql.createConnection({
+        host,
+        user,
+        password,
+        database: databaseName,
+        multipleStatements: true
+    });
 
-    return (password === undefined || database === undefined)? false : true;  
+    const seedsSQL = generateSeedsMarkDown();
+
+    const data = await connection.promise().query(seedsSQL)
+    .then((result) => {
+        console.log(`Database "${databaseName}" seeded successfully`);      
+        return result;
+    })
+    .catch((error) => {
+        console.log(`Unable to seed database "${databaseName}"`);  
+        return null;
+    })
+
+    connection.end(); 
+
+    return data;
 }
 
 
 export default {
-    createLocalDatabase,
-    generateSchemaMarkdown,
+    createDatabaseSchema,
+    seedDatabase,
+    generateSeedsMarkDown,
     generateEnvMarkdown,
-    createEnvFile,
-    isDotenvCreated
+    createEnvFile
 }

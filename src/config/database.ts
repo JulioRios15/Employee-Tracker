@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const config: ConnectionOptions = {
-    host: 'localhost',
-    user: 'root',
+    host: process.env.HOST || 'localhost',
+    user: process.env.USER || 'root',
     password: process.env.PASSWORD || '123456',
     database: process.env.DATABASE ||'employee_tracker_db'
 }

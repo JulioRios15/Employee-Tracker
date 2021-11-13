@@ -1,10 +1,6 @@
-/**
- * 
- * @param databaseName default database for our schema markdown
- * @returns our default raw schema.sql
- */
 
-export const generateSchemaMarkdown = (databaseName: string): string => `
+
+export const generateSchemaMarkDown = (databaseName: string): string => `
 DROP DATABASE IF EXISTS ${databaseName};
 CREATE DATABASE ${databaseName};
 
@@ -36,6 +32,7 @@ CREATE TABLE employee (
     FOREIGN KEY (manager_id) REFERENCES employee(id)
     On DELETE SET NULL
  );
+
 `;
 
 /**
@@ -113,9 +110,11 @@ VALUES  ("Joel", "Rivera", 1, null), -- 9 reports to 8 / 12-18
         ("Xavier", "Sanchez", 15, 41);
 `
 
-export const generateEnvMarkdown = (databaseName: string, password: string):string => {
+export const generateEnvMarkdown = (host: string, user: string, password: string, databaseName:  string):string => {
     return `
-DATABASE=${databaseName}
+HOST=${host}
+USER=${user}
 PASSWORD=${password}
+DATABASE=${databaseName}
 `;
 }
