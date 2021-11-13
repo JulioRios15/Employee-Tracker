@@ -20,6 +20,13 @@ export const promptAddEmployee = async (connection: Connection) => {
     employeeRoles.forEach((item: any) => rolesArr.push(item.title));
 
 
+    const employeeRolesQuestion: ListQuestion = {
+        type: "list",
+        name: "employeeRole",
+        message: "Select Employee Role",
+        choices: rolesArr     
+    }
+
     const firstNameQuestion: Question = {
         type: "input",
         name: "firstName",
@@ -33,19 +40,11 @@ export const promptAddEmployee = async (connection: Connection) => {
         validate: validate.validateNotEmpty
     }
 
-    const employeeRolesQuestion: ListQuestion = {
-        type: "list",
-        name: "employeeRole",
-        message: "Select Employee Role",
-        choices: rolesArr
-        
-    }
-
     // Define out prompt questions
     const questions: QuestionCollection<Answers> = [
+        employeeRolesQuestion,
         firstNameQuestion,
-        lastNameQuestion,
-        employeeRolesQuestion
+        lastNameQuestion
     ]
 
     
