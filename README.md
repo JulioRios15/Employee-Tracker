@@ -47,7 +47,7 @@ Project Demo
 [Watch demo video in youtube](https://youtu.be/YHdC5BRLnSE)
 
 
-## Contribution
+## Contributions
 contributions are always welcome!
 
 
