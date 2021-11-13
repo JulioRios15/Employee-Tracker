@@ -1,4 +1,3 @@
-import mysql from 'mysql2';
 import {promptConfirm, IConfirmAnswer} from '../inquirer/prompts/promptConfirm';
 import {promptConfig, IConfigAnswers} from '../inquirer/prompts/promptConfig';
 import utils from '../utils';
@@ -42,3 +41,7 @@ async function init(){
 }
 
 init();
+
+export default {
+    init
+}
