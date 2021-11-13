@@ -20,7 +20,7 @@ const createDatabaseSchema = async (databaseName: string, password: string, host
 
     const data = await connection.promise().query(schemaSQL)
     .then((result) => {
-        console.log(` Schema for database "${databaseName}" created successfully`);  
+        console.log(`Schema for database "${databaseName}" created successfully`);  
         return result;   
     })
     .catch((error) => {
