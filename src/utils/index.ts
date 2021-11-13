@@ -5,6 +5,7 @@ import {
 } from "./sqlMarkdown";
 import {createEnvFile} from "./fileManagement";
 import mysql, {Connection, RowDataPacket} from 'mysql2';
+import fs from "fs";
 
 
 const createDatabaseSchema = async (databaseName: string, password: string, host: string, user: string ="root") => {
@@ -59,11 +60,25 @@ const seedDatabase = async (databaseName: string, password: string, host: string
     return data;
 }
 
+/**
+ * 
+ * @param path file path with file name and extension
+ * @returns true if file found, false otherwise
+ */
+const fileExist = (path: string): boolean => { 
+   try{
+        return (fs.existsSync(path))? true: false;
+   } catch(err){
+       return false;
+   }
+}
+
 
 export default {
     createDatabaseSchema,
     seedDatabase,
     generateSeedsMarkDown,
     generateEnvMarkdown,
-    createEnvFile
+    createEnvFile,
+    fileExist
 }

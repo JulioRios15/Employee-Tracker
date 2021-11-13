@@ -18,7 +18,7 @@ export const promptConfirm = async (message:string = "please enter y or n to con
     ];
 
     return await inquirer.prompt(questions)
-    .then((data: IConfirmAnswer) => data)
+    .then((data) => data)
     .catch(() => null);
     
 }
